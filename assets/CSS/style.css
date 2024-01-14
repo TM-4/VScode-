@@ -1,0 +1,483 @@
+@charset "UTF-8";
+
+/* 768px（スマホやタブレットの基準値）より大きければ｛｝内のものを適用する */
+@media  screen and (max-width:768px) {
+    
+}
+
+/* Base style */
+body {
+    /* Noto Sans JPのフォントが読み込まれなかった場合の代替案の羅列も書いてある https://willcloud.jp/knowhow/font-family/#i-5*/
+    font-family: 'Noto Sans JP', "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333;
+}
+/*  , で複数のタグにまとめてCSSを当てれる */
+label,input,textarea,select,button{
+    /* カーソルを指にする */
+    cursor: pointer;
+}
+button{
+    /* buttonに元からあたっているスタイルを消す */
+    border: 0;
+}
+
+/*
+ grid
+ */
+ .grid{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    /* display: flex;を中央揃えにするプロパティ 縦軸と横軸*/
+    align-items: center;
+    justify-content: center;
+}
+.grid_item{
+    list-style: none;
+}
+.grid_col_2 > .grid_item{
+    width: 50%;
+}
+.grid_col_3 > .grid_item{
+    width: 33.3%;
+}
+.grid_col_4 > .grid_item{
+    width: 25%;
+}
+@media screen and (max-width:768px) {
+    .grid{
+        display: block;
+    }
+    .grid_col_2 > .grid_item,
+    .grid_col_3 > .grid_item,
+    .grid_col_4 > .grid_item{
+        width: 100%;
+        margin: 20px 0;
+    }
+    
+}
+
+
+
+/* section */
+.section{
+    padding: 30px 15px;
+}
+.section_secondaly{
+    background: #efefef;
+}
+.section_headline{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    /* 余白の設定 */
+    margin: 0 0 40px;
+}
+.section_button{
+    margin-top: 40px;
+    text-align: center;
+}
+@media  screen and (max-width:768px) {
+    .section{
+        padding: 20px 10px;
+    }
+    .section_headline{
+        font-size: 30px;
+        margin: 0 0 20px;
+    }
+}
+
+/* header */
+.header{
+    width: 100%;
+    display: flex;
+    /* 要素が左右の端による */
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    /* 他の要素と関係なく常に固定 fixed＝固定*/
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+}
+.header_logo{
+    margin: 0;
+}
+.header_logo > a{
+    display: block;
+    color: transparent;
+}
+/* .header_nav{} */
+.header_navlist{
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* .header_navitem{} */
+.header_navitem > a{
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+    transition: border-color .25s;
+}
+.header_navitem > a:hover{
+    border-bottom: 2px solid #333;
+}
+
+
+
+/* hero */
+.hero{
+    /* vw(view width) Windowサイズの横幅 */
+    width: 100vw;
+    /* vh(view height) Windowサイズの縦幅 */
+    height: 100vh;
+    /* 親にposition: relative;　子に position: absolute; するとrelativeの中で子要素のabsoluteは自由に動くことができる*/
+    position: relative;
+    /* 要素からはみ出たものを隠す */
+    overflow: hidden;
+}
+.hero > strong{
+    position: absolute;
+    /* 数字の大きい要素の方がレイヤーの上にくる */
+    z-index: 3;
+    /* 真ん中に持ってくる組み合わせ */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 120px;
+    color: #fff;
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+.hero > video{
+    position: absolute;
+    z-index: 1;
+    width: auto;
+    height: 110%;
+}
+.hero_particles{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+}
+@media  screen and (max-width:768px) {
+    .hero > strong{
+        font-size: 50px;
+    }
+}
+
+
+
+/* about */
+.about{
+    margin: 0;
+    /* aboutの子要素に対して要素を横並びにする */
+    display: flex;
+}
+/* .about_image{} */
+.about_caption{
+    padding-left: 15px;
+}
+.about_headline{
+    margin: 0 0 20px;
+    font-size: 30px;
+}
+/* .about_description{} */
+@media  screen and (max-width:768px) {
+    .about{
+        display: block;
+    }
+    .about_image{
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    .about_headline{
+        font-style: 20px;
+        text-align: center;
+    }
+
+}
+
+
+/*
+ feature
+ */
+.feature{
+    text-align: center;
+    padding: 0 15px;
+}
+.feature_headline{
+    font-weight: bold;
+    margin: 0 0 20px;
+}
+.feature_img{
+    margin: 0 0 20px;
+}
+.feature_description{
+    margin: none;
+    text-align:left ;
+}
+
+
+/* 
+card
+ */
+.card{
+    padding: 0 10px;
+}
+.card_link{
+    display: block;
+    /* リンクの青字を消す */
+    color: #333;
+    /* 下線を消す */
+    text-decoration: none;
+    position: relative;
+    /* transition（遷移）：対象のプロパティが変化するまでの時間を変更する 簡単なアニメーション*/
+    transition: background-color .25s;
+}
+/* hover マウスカーソルを合わせると変化するプロパティ */
+.card_link:hover{
+    background-color: #eee;
+}
+.card_rabel{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #999;
+    color: #fff;
+    display: block;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+.card_img{
+    width: 95%;
+    height: auto;
+}
+.card_info{
+    padding: 5px 10px;
+}
+/* .card_time{} */
+.card_headline{
+    margin: 0;
+}
+.card_description{
+    margin: 0;
+}
+
+
+/*
+ avator
+ */
+.avator{
+    display: flex;
+    /* dt（definition term）とdd(definition description)を反転させる */
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: start;
+    padding: 10px;
+
+}
+.avator_name{
+    font-weight: bold;
+    padding-left: 15px;
+}
+.avator_img{
+    margin: 0;
+    /* 角丸を作る */
+    border-radius: 5px;
+    /* 画像を角丸にするとき必要 */
+    overflow: hidden;
+    /*
+    border-radius: 50%;
+    overflow: hidden;
+    で画像を丸くできる
+    */
+}
+
+
+/*
+ button
+ */
+
+.button{
+    /* インライン要素でもありブロックレベル要素でもあるような振る舞いをさせることができる */
+    display: inline-block;
+    color: #fff;
+    font-weight: bold;
+    background-color: #333;
+    text-align: center;
+    padding: 15px 60px;
+    text-decoration: none;
+    border-radius: 5px;
+    /* ボックスに影を付ける:X軸 Y軸 ぼかしの強さ 色 */
+    box-shadow: 5px 5px 0 #bbb;
+    transition: box-shadow .25s;
+}
+.button:hover{
+    box-shadow: 0 0 0 #bbb;
+}
+.button.button_submission{
+    background: #92d3ca;
+}
+
+/* .select,.input,.radio,.textarea, */
+.select{
+    border-radius: 5px;
+    padding: 10px;
+    /* 枠線 　線の太さ・種類・色を指定する*/
+    border: 1px solid #ccc;
+    /* 最低でも指定したpx分の横幅を保ってもらう */
+    min-width: 500px;
+}
+.input{
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    min-width: 500px;
+}
+.radio{
+    margin: 0 10px;
+}
+.textarea{
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    min-width: 500px;
+    min-height: 100px;
+}
+@media  screen and (max-width:768px) {
+    .select,
+    .input,
+    .textarea{
+        min-width: auto;
+        width: 100%;
+    }
+}
+
+/* 
+form
+*/
+
+/* .form{}  */
+/*  margin: 0 auto;　ブロック要素のタグを中央寄せ */
+.form_table{
+    margin: 0 auto;
+} 
+/* .form_table tr{} */
+.form_table th{
+    padding: 10px;
+    text-align: left;
+}
+.form_table td{
+    padding: 10px;
+}
+.form_button{
+    margin: 20px;
+    text-align: center;
+}
+@media  screen and (max-width:768px) {
+    /* <table>についてくる<tbody>などのタグをdisplay: block;にしてしまう */
+    .form_table,
+    .form_table tbody,
+    .form_table tr,
+    .form_table th,
+    .form_table td{
+        display: block;
+    }
+}
+
+
+
+/*
+ works
+ */
+.works{
+    margin: 40px;
+    padding: 20px;
+    text-align: center;
+}
+.works > img{
+    margin: 0 15px;
+}
+@media  screen and (max-width:768px) {
+    .works{
+    margin: 20px 0;
+    padding: 10px;
+    }
+    .works > img{
+        width: 100px;
+        margin: 5px;
+    }
+}
+
+/* 
+footer
+*/
+.footer{
+    background-color:#333;
+    color: #fff;
+}
+.footer_map{
+    margin: 0;
+    padding: 40px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.footer_map > iframe{
+    width: 60%;
+}
+.footer_mapinfo{
+    width: 40%;
+    padding: 15px;
+}
+.footer_maplogo{
+    font-size: 25px;
+    font-weight: bold;
+
+}
+.footer_maplogo > svg{
+    fill: transparent;
+    margin-right: 10px;
+}
+.footer_mapaddress{
+    font-style: normal;
+
+}
+.footer_mapaddress>a{
+    color: #fff;
+}
+.footer_line{
+    border-color: #444;
+}
+.footer_copy{
+    display: block;
+    text-align: center;
+    padding: 10px;
+}
+@media  screen and (max-width:768px) {
+    .footer_map{
+        padding: 15px;
+        display: block;
+    }
+    .footer_map > iframe{
+        width: 100%;
+        height: 200px;
+    }
+    .footer_mapinfo{
+        width: 100%;
+        text-align: center;
+    }
+}
